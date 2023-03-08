@@ -18,6 +18,7 @@ function pickRandomFlag(flags) {
 function App() {
   const [flags, setFlags] = useState(getFlags());
   const [answer, setAnswer] = useState(pickRandomFlag(flags));
+  const [disabled, setDisabled] = useState(false);
 
   const audioRef = useRef();
 
@@ -27,7 +28,11 @@ function App() {
   }, [flags]);
 
   function reset() {
-    setFlags(getFlags());
+    setDisabled(true);
+    setTimeout(() => {
+      setFlags(getFlags());
+      setDisabled(false);
+    }, 3000);
   }
 
   return (
@@ -47,6 +52,7 @@ function App() {
                 countryName={flag.country_name}
                 answer={answer}
                 reset={reset}
+                disabled={disabled}
               />
             </Column>
           ))}

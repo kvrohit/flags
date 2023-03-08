@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./Flag.module.scss";
 
-export default function Flag({ isoCountryCode, countryName, reset, answer }) {
+export default function Flag({
+  isoCountryCode,
+  countryName,
+  reset,
+  answer,
+  disabled,
+}) {
   const [result, setResult] = useState("none");
 
   useEffect(() => {
@@ -15,20 +21,12 @@ export default function Flag({ isoCountryCode, countryName, reset, answer }) {
       setResult("incorrect");
     }
 
-    setTimeout(() => {
-      reset();
-    }, 3000);
-  }
-
-  function state() {
-    if (isoCountryCode !== answer.isoCountryCode && result !== "none") {
-      return styles.disabled;
-    }
+    reset();
   }
 
   return (
     <div
-      className={`${styles.flag}`}
+      className={`${styles.flag} ${disabled ? styles.disabled : null}`}
       onClick={handleClick}
     >
       <img
