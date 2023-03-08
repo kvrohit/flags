@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import styles from "./Flag.module.scss";
 
 export default function Flag({
   isoCountryCode,
   countryName,
-  reset,
   answer,
   disabled,
+  next,
 }) {
   const [result, setResult] = useState("none");
 
@@ -21,22 +20,29 @@ export default function Flag({
       setResult("incorrect");
     }
 
-    reset();
+    next();
   }
 
   return (
     <div
-      className={`${styles.flag} ${disabled ? styles.disabled : null}`}
+      className={`relative hover:scale-105 transition-transform cursor-pointer shadow-lg ${
+        disabled ? "pointer-events-none" : "pointer-events-auto"
+      }`}
       onClick={handleClick}
     >
       <img
+        className="rounded-md"
         src={`/svg/${isoCountryCode}.svg`}
         width="100%"
         height="100%"
         alt={countryName}
       />
       {result === "none" ? null : (
-        <div className={`${styles.result} ${styles[result]}`}>
+        <div
+          className={`rounded-md absolute inset-0 flex items-center justify-center text-white ${
+            result === "correct" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
           {result === "correct" ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,8 +50,7 @@ export default function Flag({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              width="80%"
-              height="80%"
+              className="w-2/3 h-2/3"
             >
               <path
                 strokeLinecap="round"
@@ -60,8 +65,7 @@ export default function Flag({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              width="80%"
-              height="80%"
+              className="w-2/3 h-2/3"
             >
               <path
                 strokeLinecap="round"
