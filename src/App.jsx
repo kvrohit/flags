@@ -43,7 +43,7 @@ function App() {
   return (
     <>
       <Header count={count} />
-      <div className="px-8 py-4 bg-zinc-50">
+      <div className="px-8 py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {flags.map((flag) => (
             <div key={flag.iso_country_code}>
