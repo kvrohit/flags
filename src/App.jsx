@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  createSignal,
+  createEffect,
+  createMemo,
+  onCleanup,
+  For,
+} from "solid-js";
 import Flag from "./components/Flag";
 import Header from "./components/Header";
 import { getFlags, getRandomInt } from "./utils.js";
@@ -8,55 +14,57 @@ function pickRandomFlag(flags) {
 }
 
 function App() {
-  const [flags, setFlags] = useState(getFlags());
-  const [answer, setAnswer] = useState(pickRandomFlag(flags));
-  const [disabled, setDisabled] = useState(false);
-  const [count, setCount] = useState(0);
+  const [flags, setFlags] = createSignal(getFlags());
+  const [disabled, setDisabled] = createSignal(false);
+  const [count, setCount] = createSignal(0);
 
-  const audioRef = useRef();
+  const answer = createMemo(() => pickRandomFlag(flags()));
 
-  useEffect(() => {
-    setAnswer(pickRandomFlag(flags));
-    audioRef.current.play();
-  }, [flags]);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setCount(count - 1);
-    }, 1 * 1000);
-
-    if (count === 0) {
-      clearTimeout(id);
-    }
-  }, [count]);
+  let timer, countdownTimer;
 
   function next() {
     setDisabled(true);
     setCount(3);
 
-    setTimeout(() => {
-      setFlags(getFlags());
-      setDisabled(false);
+    countdownTimer = setInterval(() => {
+      setCount((count) => {
+        if (count === 1) {
+          clearInterval(countdownTimer);
+        }
+
+        return count - 1;
+      });
+    }, 1 * 1000);
+
+    timer = setTimeout(() => {
+      setFlags(() => {
+        setDisabled(false);
+        return getFlags();
+      });
     }, 3 * 1000);
   }
 
+  onCleanup(() => {
+    clearTimeout(timer);
+    clearInterval(countdownTimer);
+  });
+
   return (
     <>
-      <Header count={count} />
+      <Header count={count()} />
       <div className="px-8 py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {flags.map((flag) => (
-            <div key={flag.iso_country_code}>
+          <For each={flags()}>
+            {(flag) => (
               <Flag
-                key={flag.iso_country_code}
                 isoCountryCode={flag.iso_country_code}
                 countryName={flag.country_name}
-                answer={answer}
-                disabled={disabled}
+                answer={answer()}
+                disabled={disabled()}
                 next={next}
               />
-            </div>
-          ))}
+            )}
+          </For>
         </div>
         <span className="inline-block my-10 bg-white p-4 rounded-lg space-y-0.5 shadow">
           <p className="text-xs text-zinc-500">Identify</p>
@@ -64,15 +72,15 @@ function App() {
             className="text-xl sm:text-2xl pr-12 sm:pr-28"
             onClick={() => audioRef.current.play()}
           >
-            {answer.country_name}
+            {answer().country_name}
           </p>
         </span>
       </div>
-      <audio
+      {/* <audio
         autoPlay={true}
-        src={`/audio/${answer.iso_country_code}.wav`}
-        ref={audioRef}
-      />
+        src={`/audio/${answer().iso_country_code}.wav`}
+      ref={audioRef}
+      /> */}
     </>
   );
 }
