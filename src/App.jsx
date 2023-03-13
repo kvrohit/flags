@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     setAnswer(pickRandomFlag(flags));
-    audioRef.current.play();
+    // audioRef.current.play();
   }, [flags]);
 
   useEffect(() => {
@@ -68,11 +68,11 @@ function App() {
           </p>
         </span>
       </div>
-      <audio
+      {/* <audio
         autoPlay={true}
         src={`/audio/${answer.iso_country_code}.wav`}
         ref={audioRef}
-      />
+      /> */}
     </>
   );
 }

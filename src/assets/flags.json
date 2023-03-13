@@ -106,5 +106,25 @@
   {
     "iso_country_code": "fi",
     "country_name": "Finland"
+  },
+  {
+    "iso_country_code": "mu",
+    "country_name": "Mauritius"
+  },
+  {
+    "iso_country_code": "tr",
+    "country_name": "Turkey"
+  },
+  {
+    "iso_country_code": "va",
+    "country_name": "Vatican City"
+  },
+  {
+    "iso_country_code": "ch",
+    "country_name": "Switzerland"
+  },
+  {
+    "iso_country_code": "it",
+    "country_name": "Italy"
   }
 ]
