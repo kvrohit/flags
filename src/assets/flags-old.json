@@ -122,5 +122,29 @@
   {
     "iso_country_code": "ch",
     "country_name": "Switzerland"
+  },
+  {
+    "iso_country_code": "it",
+    "country_name": "Italy"
+  },
+  {
+    "iso_country_code": "se",
+    "country_name": "Sweden"
+  },
+  {
+    "iso_country_code": "kr",
+    "country_name": "South Korea"
+  },
+  {
+    "iso_country_code": "jp",
+    "country_name": "Japan"
+  },
+  {
+    "iso_country_code": "ke",
+    "country_name": "Kenya"
+  },
+  {
+    "iso_country_code": "mk",
+    "country_name": "Macedonia"
   }
 ]
