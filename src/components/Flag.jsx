@@ -35,7 +35,7 @@ export default function Flag({
         src={`/svg/${isoCountryCode}.svg`}
         width="100%"
         height="100%"
-        alt={countryName}
+        alt="Flag of a country"
       />
       {result === "none" ? null : (
         <div

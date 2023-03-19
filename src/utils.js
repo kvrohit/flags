@@ -24,11 +24,15 @@ function filterList(list, itemToRemove) {
   );
 }
 
+function addUUID(item) {
+  return { ...item, id: crypto.randomUUID() };
+}
+
 export function getFlags() {
-  const first = getRandomFlag(flags);
+  const first = addUUID(getRandomFlag(flags));
   const filtered = filterList(flags, first);
-  const second = getRandomFlag(filtered);
-  const third = getRandomFlag(filterList(filtered, second));
+  const second = addUUID(getRandomFlag(filtered));
+  const third = addUUID(getRandomFlag(filterList(filtered, second)));
 
   return [first, second, third];
 }

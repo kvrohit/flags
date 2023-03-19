@@ -46,16 +46,14 @@ function App() {
       <div className="px-8 py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {flags.map((flag) => (
-            <div key={flag.iso_country_code}>
-              <Flag
-                key={flag.iso_country_code}
-                isoCountryCode={flag.iso_country_code}
-                countryName={flag.country_name}
-                answer={answer}
-                disabled={disabled}
-                next={next}
-              />
-            </div>
+            <Flag
+              key={flag.id}
+              isoCountryCode={flag.iso_country_code}
+              countryName={flag.country_name}
+              answer={answer}
+              disabled={disabled}
+              next={next}
+            />
           ))}
         </div>
         <span className="inline-block my-10 bg-white p-4 rounded-lg space-y-0.5 shadow">
