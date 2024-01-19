@@ -150,5 +150,77 @@
   {
     "iso_country_code": "gb",
     "country_name": "United Kingdom"
+  },
+  {
+    "iso_country_code": "fr",
+    "country_name": "France"
+  },
+  {
+    "iso_country_code": "ph",
+    "country_name": "Philippines"
+  },
+  {
+    "iso_country_code": "lv",
+    "country_name": "Latvia"
+  },
+  {
+    "iso_country_code": "mc",
+    "country_name": "Monaco"
+  },
+  {
+    "iso_country_code": "pl",
+    "country_name": "Poland"
+  },
+  {
+    "iso_country_code": "mv",
+    "country_name": "Maldives"
+  },
+  {
+    "iso_country_code": "ie",
+    "country_name": "Ireland"
+  },
+  {
+    "iso_country_code": "ar",
+    "country_name": "Argentina"
+  },
+  {
+    "iso_country_code": "es",
+    "country_name": "Spain"
+  },
+  {
+    "iso_country_code": "kh",
+    "country_name": "Cambodia"
+  },
+  {
+    "iso_country_code": "mn",
+    "country_name": "Mongolia"
+  },
+  {
+    "iso_country_code": "pa",
+    "country_name": "Panama"
+  },
+  {
+    "iso_country_code": "my",
+    "country_name": "Malaysia"
+  },
+  {
+    "iso_country_code": "bd",
+    "country_name": "Bangladesh"
+  },
+  {
+    "iso_country_code": "dk",
+    "country_name": "Denmark"
+  },
+  {
+    "iso_country_code": "gn",
+    "country_name": "Guinea"
+  },
+  {
+    "iso_country_code": "sk",
+    "country_name": "Slovakia"
+  },
+  {
+    "iso_country_code": "ng",
+    "country_name": "Nigeria"
   }
 ]
